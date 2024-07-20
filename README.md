@@ -1,6 +1,6 @@
 # Secret Sharer Go
 
-
+[Secret Sharer](https://github.com/allen-garvey/secret-sharer) re-written in Go.
 
 ## Dependencies
 
