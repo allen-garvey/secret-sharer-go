@@ -1,0 +1,14 @@
+{{ template "top" . }}
+
+<header>
+    <h1>{{ .title }}</h1>
+</header>
+
+<form method="POST" action="/items">
+    <label>Title<input name="title" /></label>
+    
+    <label>Content<textarea name="content"></textarea></label>
+    <input type="submit" value="Submit" />
+</form>
+
+{{ template "bottom" . }}
