@@ -9,7 +9,7 @@
 ## Getting Started
 
 * Download or clone this repository
-* `go run .`
+* `go run ./src`
 
 ## License
 
