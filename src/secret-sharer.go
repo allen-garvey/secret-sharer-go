@@ -16,16 +16,13 @@ type Secret struct {
 
 func main() {
 	secrets := map[string]Secret{}
-	const SITE_TITLE = "Secret Sharer"
 
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/assets", "./assets")
 
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
-			"title": SITE_TITLE,
-		})
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{})
 	})
 
 	router.POST("/items", func(c *gin.Context) {
@@ -39,7 +36,6 @@ func main() {
 		secrets[key] = createParams
 
 		c.HTML(http.StatusOK, "created.tmpl", gin.H{
-			"title":   SITE_TITLE,
 			"itemUrl": fmt.Sprintf("/items/%s", key),
 		})
 	})
@@ -55,7 +51,6 @@ func main() {
 		}
 
 		c.HTML(http.StatusOK, "show.tmpl", gin.H{
-			"title":       SITE_TITLE,
 			"itemTitle":   secret.Title,
 			"itemContent": secret.Content,
 		})
