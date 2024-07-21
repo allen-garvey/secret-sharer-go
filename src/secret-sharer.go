@@ -15,7 +15,7 @@ type Secret struct {
 }
 
 func main() {
-	secrets := map[int]Secret{}
+	secrets := map[string]Secret{}
 	const SITE_TITLE = "Secret Sharer"
 
 	router := gin.Default()
@@ -35,23 +35,17 @@ func main() {
 			log.Fatal(err)
 		}
 
-		key := rand.IntN(999) + 1
+		key := strconv.Itoa(rand.IntN(999) + 1)
 		secrets[key] = createParams
 
 		c.HTML(http.StatusOK, "created.tmpl", gin.H{
 			"title":   SITE_TITLE,
-			"itemUrl": fmt.Sprintf("/items/%d", key),
+			"itemUrl": fmt.Sprintf("/items/%s", key),
 		})
 	})
 
 	router.GET("/items/:key", func(c *gin.Context) {
-		keyParam := c.Param("key")
-
-		key, err := strconv.Atoi(keyParam)
-		if err != nil {
-			c.String(http.StatusNotFound, "Not found")
-			return
-		}
+		key := c.Param("key")
 
 		secret, keyExists := secrets[key]
 
