@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"log"
 	"math/rand/v2"
 	"net/http"
 	"strconv"
@@ -29,7 +28,8 @@ func main() {
 		var createParams Secret
 		err := c.Bind(&createParams)
 		if err != nil {
-			log.Fatal(err)
+			c.String(http.StatusBadRequest, "Bad request")
+			return
 		}
 
 		key := strconv.Itoa(rand.IntN(999) + 1)
