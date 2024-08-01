@@ -1,9 +1,20 @@
 body {
-    padding: 50px;
-    font: 26px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 50px;
+  font: 26px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #fff;
+    background-color: #333;
   }
-  
+
+  input, textarea, input:focus, textarea:focus {
+    color: #fff;
+    background-color: #000;
+  }
+
   a {
-    color: #00B7FF;
+    color: rgb(177, 177, 226);
   }
-  
+}
